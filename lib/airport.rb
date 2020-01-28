@@ -15,9 +15,12 @@ class Airport
         plane.land
     end
 
-    private
+    def take_off(plane)
+        @planes.delete plane
+        plane.take_off
+    end
 
-    attr_reader :planes
+    private
 
     def airport_full?
         planes.length >= capacity

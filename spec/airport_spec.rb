@@ -4,7 +4,7 @@ describe Airport do
     let (:plane) {Plane.new}
 
     describe '#land' do
-        it 'lands a plane in the airport' do
+        it 'lets a plane land' do
             expect(subject.land(plane)).to eq :landed
         end
 
@@ -16,6 +16,18 @@ describe Airport do
 
     it 'has a default capacity' do
         expect(subject.capacity).to eq Airport::DEFAULT_CAPACITY
+    end
+
+    describe '#take_off' do
+      it 'lets a plane take off' do
+        expect(subject.take_off(plane)). to eq :flying
+      end
+
+      it 'is no longer in the airport' do
+        subject.land(plane)
+        subject.take_off(plane)
+        expect(subject.planes).not_to include plane
+      end
     end
 
     describe 'initialization' do
