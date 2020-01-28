@@ -7,7 +7,7 @@ class Plane
     @location = :landed
   end
 
-  def land(airport)
+  def land
     :landed
     @location = :landed
   end
