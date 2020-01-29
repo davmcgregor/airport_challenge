@@ -22,7 +22,6 @@ $ irb
 
 5. Tests can be run using Rspec
 
-## User requirements
 ```Shell
 > airport = Airport.new # => @capacity = 10
 > big_airport = Airport.new(200) # => @capacity = 200
