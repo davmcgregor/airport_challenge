@@ -1,6 +1,10 @@
 require 'airport'
 
 describe Airport do
+  before(:each) do 
+    allow(Weather).to receive(:stormy?) { false }
+  end
+
   let (:plane) {Plane.new}
 
   describe '#initialize' do
@@ -16,6 +20,11 @@ describe Airport do
   end
 
   describe '#land' do
+    it 'cannot let a plane land if it is stormy' do
+      allow(subject).to receive(:stormy?) { true }
+      expect { subject.land(plane) }.to raise_error "Cannot land while stormy"
+    end  
+
     it 'lets a plane land' do
       expect(subject.land(plane)).to eq :landed
     end
@@ -32,6 +41,11 @@ describe Airport do
   end
 
   describe '#take_off' do
+    it 'cannot let a plane take off if it is stormy' do
+      allow(subject).to receive(:stormy?) { true }
+      expect { subject.take_off(plane) }.to raise_error "Cannot take off while stormy"
+    end    
+
     it 'lets a plane take off' do
       subject.land(plane)
       expect(subject.take_off(plane)). to eq :flying
