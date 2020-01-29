@@ -1,8 +1,51 @@
 # Airport-challenge
 
-This programme replicates a the flow of airport traffic. Planes can land and take off when it is sunny, and no planes can land or take off when it is stormy.
+![airport](airport.jpg)
+
+This programme replicates the flow of traffic at an airport. Planes can land and take off when it is sunny, and no planes can land or take off when it is stormy.
 
 This challenge is the first weekend challenge at [Makers Academy](https://github.com/makersacademy).
+
+## Instructions
+
+#### Install ####
+
+1. Fork this repo, and clone to your local machine
+2. Run the command `gem install bundle`
+3. Once installation is complete, run `bundle`
+4. Run the programme in Ruby or the command line by requiring the airplane.rb in the lib directory
+
+```Shell
+$ irb
+> require './lib/airport.rb'
+```
+
+5. Tests can be run using Rspec
+
+## User requirements
+```Shell
+> airport = Airport.new # => @capacity = 10
+> big_airport = Airport.new(20) # => @capacity = 20
+```
+#### Create an airport ####
+Airports have a default capacity of 100 planes but the user can specify their own capacity.
+
+```Shell
+> airport = Airport.new # => @capacity = 100
+> large_airport = Airport.new(200) # => @capacity = 200
+```
+
+#### Add and instruct planes ####
+
+Airports are empty once initialised - planes need to land before they are allowed to take off.
+
+```Shell
+> plane = Plane.new
+> airport.land(plane) # => :landed
+> airport.take_off(plane) # => :flying
+```
+
+If the weather is stormy then no planes can land or take off.
 
 ## User requirements
 
@@ -34,9 +77,8 @@ I want to prevent landing when weather is stormy
 
 #### Designing Objects ####
 
-For the user stories I created a table of each object; its attributes and its behaviour (methods):
+For the user stories I created a domain model for each object, including attributes and behaviour:
 
-1.
 
 | Object: | Airport | | | |
 | ------- | ------- | - | - | - |
@@ -44,16 +86,21 @@ For the user stories I created a table of each object; its attributes and its be
 | **Methods:** | Land | Take off |Full? | In airport? |
 
 
-2. 
-
 | Object: | Plane | | | |
 | ------- | ----- | - | - | - |
 | **Attributes:** | Location |
 | **Methods:** | Land | Take off | Grounded? | Flying? |
 
-3. 
 
 | Object: | Weather | |
 | ------- | ----- | - |
 | **Attributes:** | Sunny | Stormy |
 | **Methods:** | Stormy? |
+
+#### Testing for edge cases ####
+
+The following edge cases have been tested and factored:
+
+1.  Planes can only take off from airports they are in
+2. Planes that are already flying cannot take off and/or be in an airport
+3. Planes that are landed cannot land again and must be in an airport
