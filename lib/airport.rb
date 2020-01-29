@@ -10,20 +10,22 @@ class Airport
 
     def land(plane)
         fail "Airport full: cannot land plane" if airport_full?
-        @planes << plane
-
+        @planes.push plane
         plane.land
     end
 
     def take_off(plane)
+        fail "Plane is not in airport" unless in_airport?(plane)
         @planes.delete plane
         plane.take_off
     end
 
-    private
-
     def airport_full?
         planes.length >= capacity
+    end
+
+    def in_airport?(plane)
+      (@planes.include? (plane)) ? true : false
     end
 
 end
