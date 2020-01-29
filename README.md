@@ -13,7 +13,7 @@ This challenge is the first weekend challenge at [Makers Academy](https://github
 1. Fork this repo, and clone to your local machine
 2. Run the command `gem install bundle`
 3. Once installation is complete, run `bundle`
-4. Run the programme in Ruby or the command line by requiring the airplane.rb in the lib directory
+4. Run the program in Ruby or the command line by requiring the airplane.rb in the lib directory
 
 ```Shell
 $ irb
@@ -25,7 +25,7 @@ $ irb
 ## User requirements
 ```Shell
 > airport = Airport.new # => @capacity = 10
-> big_airport = Airport.new(20) # => @capacity = 20
+> big_airport = Airport.new(200) # => @capacity = 200
 ```
 #### Create an airport ####
 Airports have a default capacity of 100 planes but the user can specify their own capacity.
@@ -79,18 +79,21 @@ I want to prevent landing when weather is stormy
 
 For the user stories I created a domain model for each object, including attributes and behaviour:
 
+ONE:
 
 | Object: | Airport | | | |
 | ------- | ------- | - | - | - |
 | **Attributes:** | Planes | Capacity | Weather | |
 | **Methods:** | Land | Take off |Full? | In airport? |
 
+TWO:
 
 | Object: | Plane | | | |
 | ------- | ----- | - | - | - |
 | **Attributes:** | Location |
 | **Methods:** | Land | Take off | Grounded? | Flying? |
 
+THREE:
 
 | Object: | Weather | |
 | ------- | ----- | - |
@@ -99,7 +102,7 @@ For the user stories I created a domain model for each object, including attribu
 
 #### Testing for edge cases ####
 
-The following edge cases have been tested and factored:
+The following edge cases have been tested and refactored:
 
 1.  Planes can only take off from airports they are in
 2. Planes that are already flying cannot take off and/or be in an airport
