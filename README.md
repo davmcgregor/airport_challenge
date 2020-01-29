@@ -22,10 +22,6 @@ $ irb
 
 5. Tests can be run using Rspec
 
-```Shell
-> airport = Airport.new # => @capacity = 10
-> big_airport = Airport.new(200) # => @capacity = 200
-```
 #### Create an airport ####
 Airports have a default capacity of 100 planes but the user can specify their own capacity.
 
